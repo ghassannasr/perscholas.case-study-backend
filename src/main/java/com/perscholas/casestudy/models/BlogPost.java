@@ -1,16 +1,18 @@
 package com.perscholas.casestudy.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.context.annotation.ScopeMetadata;
 
 import javax.persistence.*;
 import javax.transaction.UserTransaction;
 
 @Entity
-@Table(name = "blogposts")
+@Table(name = "blogpost")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class BlogPost {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // or .IDENTITY
+    @GeneratedValue(strategy = GenerationType.AUTO) // or .IDENTITY
     @Column(name = "id")
     private Long id;
 

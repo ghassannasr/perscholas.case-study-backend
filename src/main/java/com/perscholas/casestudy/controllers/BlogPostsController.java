@@ -14,36 +14,36 @@ import java.util.List;
 @RequestMapping("/blogposts")
 public class BlogPostsController {
 
-    @Autowired
-    private BlogPostRepository blogPostRepository;
-
-    @GetMapping
-    public List<BlogPost> list() {
-        return blogPostRepository.findAll();
-    }
-
-    @GetMapping
-    @RequestMapping("{id}")
-    public BlogPost get(@PathVariable Long id) {
-        return blogPostRepository.getOne(id);
-    }
-
-    @PostMapping
-    //@ResponseStatus(HttpStatus.CREATED)
-    public BlogPost create(@RequestBody final BlogPost blogPost) {
-        return blogPostRepository.saveAndFlush(blogPost);
-    }
-
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
-        //need to check for children records before deleting
-        blogPostRepository.deleteById(id);
-    }
-
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public BlogPost update(@PathVariable Long id, @RequestBody BlogPost blogPost) {
-        BlogPost existingBlogPost = blogPostRepository.getOne(id);
-        BeanUtils.copyProperties(blogPost, existingBlogPost, "id");
-        return blogPostRepository.saveAndFlush(existingBlogPost);
-    }
+//    @Autowired
+//    private BlogPostRepository blogPostRepository;
+//
+//    @GetMapping
+//    public List<BlogPost> list() {
+//        return blogPostRepository.findAll();
+//    }
+//
+//    @GetMapping
+//    @RequestMapping("{id}")
+//    public BlogPost get(@PathVariable Long id) {
+//        return blogPostRepository.getOne(id);
+//    }
+//
+//    @PostMapping
+//    //@ResponseStatus(HttpStatus.CREATED)
+//    public BlogPost create(@RequestBody final BlogPost blogPost) {
+//        return blogPostRepository.saveAndFlush(blogPost);
+//    }
+//
+//    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+//    public void delete(@PathVariable Long id) {
+//        //need to check for children records before deleting
+//        blogPostRepository.deleteById(id);
+//    }
+//
+//    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+//    public BlogPost update(@PathVariable Long id, @RequestBody BlogPost blogPost) {
+//        BlogPost existingBlogPost = blogPostRepository.getOne(id);
+//        BeanUtils.copyProperties(blogPost, existingBlogPost, "id");
+//        return blogPostRepository.saveAndFlush(existingBlogPost);
+//    }
 }

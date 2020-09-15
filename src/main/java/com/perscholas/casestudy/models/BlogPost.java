@@ -1,10 +1,8 @@
 package com.perscholas.casestudy.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.context.annotation.ScopeMetadata;
 
 import javax.persistence.*;
-import javax.transaction.UserTransaction;
 
 @Entity
 @Table(name = "blogpost")
@@ -24,19 +22,16 @@ public class BlogPost {
     @Column(name = "date")
     private String date;
 
-//    @Column(name="author-id")
-//    private Long authorId;
-
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "author_id")
+    private Author author;
 
-    public User getUser() {
-        return user;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public BlogPost(String text, String date) {

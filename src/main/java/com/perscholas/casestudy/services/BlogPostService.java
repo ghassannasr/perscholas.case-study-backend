@@ -1,9 +1,7 @@
 package com.perscholas.casestudy.services;
 
 import com.perscholas.casestudy.models.BlogPost;
-import com.perscholas.casestudy.models.User;
 import com.perscholas.casestudy.repositories.BlogPostRepository;
-import com.perscholas.casestudy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

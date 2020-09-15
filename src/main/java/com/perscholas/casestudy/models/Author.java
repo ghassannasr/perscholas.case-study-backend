@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "author")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User {
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +27,7 @@ public class User {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "user", cascade = {
+    @OneToMany(mappedBy = "author", cascade = {
             CascadeType.ALL
     })
     private List < BlogPost > blogPosts;
@@ -41,30 +39,17 @@ public class User {
     public void setBlogPosts(List<BlogPost> blogPosts) {
         this.blogPosts = blogPosts;
     }
-//    public void setBlogPosts(Set<BlogPost> blogPosts) {
-//        this.blogPosts = blogPosts;
-//    }
 
-    //    @OneToMany(mappedBy = "blogpost")
-//    private List<BlogPost> posts = new ArrayList<BlogPost>();
-//
-//    public List<BlogPost> getPosts() {
-//        return posts;
-//    }
-//
-//    public void setPosts(List<BlogPost> posts) {
-//        this.posts = posts;
-//    }
 
-    public User() {
+    public Author() {
 
     }
 
-    public User(String firstName, String lastName, String type) {
+    public Author(String firstName, String lastName, String type) {
         this(null, firstName, lastName, type);
     }
 
-    public User(Long id, String firstName, String lastName, String type) {
+    public Author(Long id, String firstName, String lastName, String type) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

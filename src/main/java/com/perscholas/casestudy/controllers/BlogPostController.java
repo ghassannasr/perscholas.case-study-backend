@@ -2,18 +2,12 @@ package com.perscholas.casestudy.controllers;
 
 
 import com.perscholas.casestudy.models.BlogPost;
-import com.perscholas.casestudy.models.User;
-import com.perscholas.casestudy.repositories.BlogPostRepository;
 import com.perscholas.casestudy.services.BlogPostService;
-import com.perscholas.casestudy.services.UserService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/blogposts")
@@ -49,7 +43,7 @@ public class BlogPostController {
         return new ResponseEntity<>(blogPostService.delete(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/update-user/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update-blogpost/{id}", method = RequestMethod.PUT)
     public ResponseEntity<BlogPost> update(@PathVariable Long id, @RequestBody BlogPost post) {
         return new ResponseEntity<>(blogPostService.update(id, post), HttpStatus.OK);
     }

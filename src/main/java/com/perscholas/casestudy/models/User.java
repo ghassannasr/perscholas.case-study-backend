@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -28,7 +29,23 @@ public class User {
     @Column(name = "type")
     private String type;
 
-//    @OneToMany(mappedBy = "blogpost")
+    @OneToMany(mappedBy = "user", cascade = {
+            CascadeType.ALL
+    })
+    private List < BlogPost > blogPosts;
+
+    public List<BlogPost> getBlogPosts() {
+        return blogPosts;
+    }
+
+    public void setBlogPosts(List<BlogPost> blogPosts) {
+        this.blogPosts = blogPosts;
+    }
+//    public void setBlogPosts(Set<BlogPost> blogPosts) {
+//        this.blogPosts = blogPosts;
+//    }
+
+    //    @OneToMany(mappedBy = "blogpost")
 //    private List<BlogPost> posts = new ArrayList<BlogPost>();
 //
 //    public List<BlogPost> getPosts() {

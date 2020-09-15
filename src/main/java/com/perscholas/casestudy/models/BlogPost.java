@@ -24,6 +24,32 @@ public class BlogPost {
     @Column(name = "date")
     private String date;
 
+//    @Column(name="author-id")
+//    private Long authorId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public BlogPost(String text, String date) {
+        this.text = text;
+        this.date = date;
+    }
+
+    public BlogPost(Long id, String text, String date) {
+        this.id = id;
+        this.text = text;
+        this.date = date;
+    }
+
     public Long getId() {
         return id;
     }

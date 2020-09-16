@@ -27,10 +27,14 @@ public class Author {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "author", cascade = {
-            CascadeType.ALL
-    })
-    private List < BlogPost > blogPosts;
+//    @OneToMany(mappedBy = "author", cascade = {
+//            CascadeType.ALL
+//    })
+//    private List < BlogPost > blogPosts;
+
+    @OneToMany
+    @ElementCollection
+    private List<BlogPost> blogPosts;
 
     public List<BlogPost> getBlogPosts() {
         return blogPosts;

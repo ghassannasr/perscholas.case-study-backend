@@ -22,8 +22,12 @@ public class BlogPost {
     @Column(name = "date")
     private String date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id")
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "author_id")
+//    private Author author;
+
+    @ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
+    //@ManyToOne(cascade = CascadeType.ALL)
     private Author author;
 
     public Author getAuthor() {
@@ -37,12 +41,14 @@ public class BlogPost {
     public BlogPost(String text, String date) {
         this.text = text;
         this.date = date;
+        this.author = null;
     }
 
-    public BlogPost(Long id, String text, String date) {
+    public BlogPost(String text, String date, Author author) {
         this.id = id;
         this.text = text;
         this.date = date;
+        this.author = author;
     }
 
     public Long getId() {

@@ -28,7 +28,8 @@ public class BlogPostService {
 
     public BlogPost update(Long id, BlogPost newPostData) {
         BlogPost originalPost = repository.findById(id).get();
-        originalPost.setText(newPostData.getText());
+        originalPost.setTitle(newPostData.getTitle());
+        originalPost.setBody(newPostData.getBody());
         originalPost.setDate(newPostData.getDate());
         //originalPost.setPostUserId(newPostData.getPostUserId());
         return repository.save(originalPost);

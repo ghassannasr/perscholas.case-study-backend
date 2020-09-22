@@ -1,8 +1,11 @@
 package com.perscholas.casestudy.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.CreatedDate;
+import org.w3c.dom.Text;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "blogpost")
@@ -15,8 +18,12 @@ public class BlogPost {
     private Long id;
 
     @Basic
-    @Column(name = "text")
-    private String text;
+    @Column(name = "title")
+    private String title;
+
+    @Basic
+    @Column(name = "body", length=5000)
+    private String body;
 
     @Basic
     @Column(name = "date")
@@ -26,27 +33,25 @@ public class BlogPost {
 //    @JoinColumn(name = "author_id")
 //    private Author author;
 
-    @ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
-    //@ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
+    @ManyToOne(cascade = CascadeType.ALL)
     private Author author;
 
-    public Author getAuthor() {
-        return author;
+    public BlogPost() {
+
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public BlogPost(String text, String date) {
-        this.text = text;
+    public BlogPost(String title, String body, String date) {
+        this.title = title;
+        this.body = body;
         this.date = date;
         this.author = null;
     }
 
-    public BlogPost(String text, String date, Author author) {
+    public BlogPost(String title, String body, String date, Author author) {
         this.id = id;
-        this.text = text;
+        this.title = title;
+        this.body = body;
         this.date = date;
         this.author = author;
     }
@@ -55,16 +60,20 @@ public class BlogPost {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getTitle() {
+        return title;
     }
 
-    public String getText() {
-        return text;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public String getDate() {
@@ -75,8 +84,14 @@ public class BlogPost {
         this.date = date;
     }
 
-    public BlogPost() {
-
+    public Author getAuthor() {
+        return author;
     }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+
 }
 

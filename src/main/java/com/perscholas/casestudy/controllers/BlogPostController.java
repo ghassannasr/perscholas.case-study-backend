@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/blogposts")
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(origins = "http://3.22.118.142:3000", maxAge = 3600)
 public class BlogPostController {
 
     @Autowired
@@ -21,12 +21,12 @@ public class BlogPostController {
         this.blogPostService = blogPostService;
     }
 
-    @RequestMapping(value = "/show-all", method = RequestMethod.GET)
+    @RequestMapping(value = "/get-all-posts", method = RequestMethod.GET)
     public ResponseEntity<Iterable<BlogPost>> index() {
         return new ResponseEntity<>(blogPostService.index(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/get-blogpost/{id}")
+    @GetMapping(value = "/get-post/{id}")
     public ResponseEntity<BlogPost> get(@PathVariable Long id) {
         return new ResponseEntity<>(blogPostService.show(id), HttpStatus.OK);
     }

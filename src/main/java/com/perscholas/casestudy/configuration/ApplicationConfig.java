@@ -10,32 +10,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.Date;
 
-@Configuration
+//@Configuration
 public class ApplicationConfig {
 
-    @Autowired
-    private BlogPostRepository blogPostRepository;
-
-    @Autowired
-    private AuthorRepository authorRepository;
+//    @Autowired
+//    private BlogPostRepository blogPostRepository;
+//
+//    @Autowired
+//    private AuthorRepository authorRepository;
 
     @PostConstruct
     public void setup() {
-        Author ghassan = new Author("Ghassan", "Nasr", "admin");
-        Author adnan = new Author("Adnan", "Nasr", "user");
 
-        BlogPost post1 = new BlogPost("This is my first post", new Date().toString(), ghassan);
-        BlogPost post2 = new BlogPost("This is my second post", new Date().toString(), ghassan);
-        BlogPost post3 = new BlogPost("This is a post from Adnan", new Date().toString(), adnan);
 
-        authorRepository.save(ghassan);
-        authorRepository.save(adnan);
 
-        blogPostRepository.save(post1);
-        blogPostRepository.save(post2);
-        blogPostRepository.save(post3);
+//
+//                Author ghassan = new Author("Ghassan", "Nasr", "admin");
+//        Author adnan = new Author("Adnan", "Nasr", "user");
+//        authorRepository.save(ghassan);
+//        authorRepository.save(adnan);
+//
+//        BlogPost post1 = new BlogPost("First Post", "This is my first post", new Date().toString(), ghassan);
+//        BlogPost post2 = new BlogPost("Second Post","This is my second post", new Date().toString(), ghassan);
+//        BlogPost post3 = new BlogPost("Adnan First Post","This is a post from Adnan", new Date().toString(), adnan);
+//
+//        authorRepository.save(ghassan);
+//        authorRepository.save(adnan);
+//
+//        blogPostRepository.save(post1);
+//        blogPostRepository.save(post2);
+//        blogPostRepository.save(post3);
     }
 
 }

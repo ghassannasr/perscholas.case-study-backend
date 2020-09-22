@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/authors")
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+//@CrossOrigin(origins = "http://3.22.118.142:3000", maxAge = 3600)
+
 public class AuthorController {
 
     @Autowired

@@ -13,47 +13,58 @@ import java.util.Date;
 public class BlogPost {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // or .IDENTITY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // or .IDENTITY
     @Column(name = "id")
     private Long id;
 
-    @Basic
     @Column(name = "title")
     private String title;
 
-    @Basic
     @Column(name = "body", length=5000)
     private String body;
 
-    @Basic
     @Column(name = "date")
     private String date;
+
 
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "author_id")
 //    private Author author;
 
-    //@ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
-    @ManyToOne(cascade = CascadeType.ALL)
+//    @ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
+    @ManyToOne(cascade = CascadeType.ALL) //GN uncommented these two lines.
     private Author author;
 
     public BlogPost() {
 
     }
 
-    public BlogPost(String title, String body, String date) {
-        this.title = title;
-        this.body = body;
-        this.date = date;
-        this.author = null;
-    }
+//    public BlogPost(String title, String body, String date ) {
+//        super();
+//        this.title = title;
+//        this.body = body;
+//        this.date = date;
+//    }
 
-    public BlogPost(String title, String body, String date, Author author) {
-        this.id = id;
+    //added this GN
+    public BlogPost(String title, String body, String date, Author author ) {
+        super();
         this.title = title;
         this.body = body;
         this.date = date;
         this.author = author;
+    }
+
+//    public BlogPost(String title, String body, String date, Author author) {
+//        //this.id = id;
+//        this.title = title;
+//        this.body = body;
+//        this.date = date;
+//        this.author = author;
+//    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -84,13 +95,13 @@ public class BlogPost {
         this.date = date;
     }
 
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
+//    public Author getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(Author author) {
+//        this.author = author;
+//    }
 
 
 }

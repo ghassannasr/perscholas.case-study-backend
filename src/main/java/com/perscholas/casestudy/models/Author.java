@@ -3,6 +3,7 @@ package com.perscholas.casestudy.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,19 +12,16 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Basic
     @Column(name = "firstname")
     private String firstName;
 
-    @Basic
     @Column(name = "lastname")
     private String lastName;
 
-    @Basic
     @Column(name = "type")
     private String type;
 
@@ -32,9 +30,10 @@ public class Author {
 //    })
 //    private List < BlogPost > blogPosts;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @ElementCollection
-    private List<BlogPost> blogPosts;
+    @JoinColumn(name = "author_id", referencedColumnName = "id") //GN uncommented this line
+    private List<BlogPost> blogPosts = new ArrayList<BlogPost>();
 
     public List<BlogPost> getBlogPosts() {
         return blogPosts;
@@ -49,12 +48,13 @@ public class Author {
 
     }
 
-    public Author(String firstName, String lastName, String type) {
-        this(null, firstName, lastName, type);
-    }
+//    public Author(String firstName, String lastName, String type) {
+//        this(null, firstName, lastName, type);
+//    }
 
-    public Author(Long id, String firstName, String lastName, String type) {
-        this.id = id;
+    public Author(String firstName, String lastName, String type) {
+        //this.id = id;
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.type = type;

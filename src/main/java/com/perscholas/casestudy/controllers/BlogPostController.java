@@ -1,7 +1,9 @@
 package com.perscholas.casestudy.controllers;
 
 
+import com.perscholas.casestudy.models.Author;
 import com.perscholas.casestudy.models.BlogPost;
+import com.perscholas.casestudy.services.AuthorService;
 import com.perscholas.casestudy.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.HttpStatus;
@@ -11,11 +13,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/blogposts")
-@CrossOrigin(origins = "http://3.22.118.142:3000", maxAge = 3600)
+//@CrossOrigin(origins = "http://3.22.118.142:3000", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 public class BlogPostController {
 
     @Autowired
     private BlogPostService blogPostService;
+
+    @Autowired
+    private AuthorService authorService;
 
     public BlogPostController(BlogPostService blogPostService) {
         this.blogPostService = blogPostService;
@@ -33,6 +39,11 @@ public class BlogPostController {
 
     @RequestMapping(value = "/create-blogpost", method = RequestMethod.POST)
     public ResponseEntity<BlogPost> create(@RequestBody BlogPost post) {
+//        Author author = post.getAuthor();
+//        author = authorService.show(author.getId());
+//        post.setAuthor(author);
+//        //System.out.println(post.);
+//        //System.out.println("Author ID IS " + post.getDate());
         return new ResponseEntity<>(blogPostService.create(post), HttpStatus.CREATED);
     }
 

@@ -28,8 +28,8 @@ public class AuthorService {
 
     public Author update(Long id, Author newAuthorData) {
         Author originalAuthor = repository.findById(id).get();
-        originalAuthor.setFirstName(newAuthorData.getFirstName());
-        originalAuthor.setLastName(newAuthorData.getLastName());
+        originalAuthor.setFirstname(newAuthorData.getFirstname());
+        originalAuthor.setLastname(newAuthorData.getLastname());
         originalAuthor.setType(newAuthorData.getType());
         return repository.save(originalAuthor);
     }

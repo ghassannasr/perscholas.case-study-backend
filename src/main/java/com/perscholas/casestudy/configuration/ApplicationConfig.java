@@ -16,45 +16,27 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.Date;
 
-@Configuration
+//@Configuration
 public class ApplicationConfig {
 
-    @Autowired
-    private BlogPostRepository blogPostRepository;
-
-    @Autowired
-    private AuthorRepository authorRepository;
+//    @Autowired
+//    private BlogPostRepository blogPostRepository;
+//
+//    @Autowired
+//    private AuthorRepository authorRepository;
 
     @PostConstruct
     public void setup() {
 
-        Author adnan = new Author("Adnan", "Nasr", "user");
-
+//        Author ghassan = new Author("Ghassan", "Nasr", "admin");
 //
-//                Author ghassan = new Author("Ghassan", "Nasr", "admin");
-//        Author adnan = new Author("Adnan", "Nasr", "user");
-//        authorRepository.save(ghassan);
-//        authorRepository.save(adnan);
+//        ghassan = authorRepository.save(ghassan);
 //
-        //GN added adnan as argument
-        BlogPost post1 = new BlogPost("First Post", "This is my first post", new Date().toString(), adnan);
-        BlogPost post2 = new BlogPost("Second Post","This is my second post", new Date().toString(), adnan);
-
-        adnan.getBlogPosts().add(post1);
-        adnan.getBlogPosts().add(post2);
-
-        blogPostRepository.save(post1);
-        blogPostRepository.save(post2);
-        authorRepository.save(adnan);
-
-//        BlogPost post3 = new BlogPost("Adnan First Post","This is a post from Adnan", new Date().toString(), adnan);
-//
-//        authorRepository.save(ghassan);
-//        authorRepository.save(adnan);
+//        BlogPost post1 = new BlogPost("First Post", "This is my first post", new Date().toString(), ghassan.getId());
+//        BlogPost post2 = new BlogPost("Second Post","This is my second post", new Date().toString(), ghassan.getId());
 //
 //        blogPostRepository.save(post1);
 //        blogPostRepository.save(post2);
-//        blogPostRepository.save(post3);
     }
 
 }

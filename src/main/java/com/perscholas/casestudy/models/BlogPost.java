@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "blogpost")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class BlogPost {
 
     @Id
@@ -20,11 +20,14 @@ public class BlogPost {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "body", length=5000)
+    @Column(name = "body", length=20000)
     private String body;
 
     @Column(name = "date")
     private String date;
+
+    @Column(name = "author_id")
+    private Long author_id;
 
 
 //    @ManyToOne(cascade = CascadeType.ALL)
@@ -32,8 +35,8 @@ public class BlogPost {
 //    private Author author;
 
 //    @ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
-    @ManyToOne(cascade = CascadeType.ALL) //GN uncommented these two lines.
-    private Author author;
+    //@ManyToOne(cascade = CascadeType.ALL) //GN uncommented these two lines.
+   // private Author author;
 
     public BlogPost() {
 
@@ -47,12 +50,19 @@ public class BlogPost {
 //    }
 
     //added this GN
-    public BlogPost(String title, String body, String date, Author author ) {
-        super();
+//    public BlogPost(String title, String body, String date, Author author ) {
+//        super();
+//        this.title = title;
+//        this.body = body;
+//        this.date = date;
+//        this.author = author;
+//    }
+
+    public BlogPost(String title, String body, String date, Long author_id) {
         this.title = title;
         this.body = body;
         this.date = date;
-        this.author = author;
+        this.author_id = author_id;
     }
 
 //    public BlogPost(String title, String body, String date, Author author) {
@@ -81,6 +91,14 @@ public class BlogPost {
 
     public String getBody() {
         return body;
+    }
+
+    public Long getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(Long author_id) {
+        this.author_id = author_id;
     }
 
     public void setBody(String body) {

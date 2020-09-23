@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "author")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Author {
 
     @Id
@@ -17,10 +17,10 @@ public class Author {
     private Long id;
 
     @Column(name = "firstname")
-    private String firstName;
+    private String firstname;
 
     @Column(name = "lastname")
-    private String lastName;
+    private String lastname;
 
     @Column(name = "type")
     private String type;
@@ -30,18 +30,18 @@ public class Author {
 //    })
 //    private List < BlogPost > blogPosts;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @ElementCollection
-    @JoinColumn(name = "author_id", referencedColumnName = "id") //GN uncommented this line
-    private List<BlogPost> blogPosts = new ArrayList<BlogPost>();
+//    @OneToMany(cascade = CascadeType.ALL) //uncommented all these lines
+//    @ElementCollection
+    //@JoinColumn(name = "author_id", referencedColumnName = "id") //GN uncommented this line
+    //private List<BlogPost> blogPosts = new ArrayList<BlogPost>();
 
-    public List<BlogPost> getBlogPosts() {
-        return blogPosts;
-    }
-
-    public void setBlogPosts(List<BlogPost> blogPosts) {
-        this.blogPosts = blogPosts;
-    }
+//    public List<BlogPost> getBlogPosts() {
+//        return blogPosts;
+//    }
+//
+//    public void setBlogPosts(List<BlogPost> blogPosts) {
+//        this.blogPosts = blogPosts;
+//    }
 
 
     public Author() {
@@ -54,9 +54,9 @@ public class Author {
 
     public Author(String firstName, String lastName, String type) {
         //this.id = id;
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
+        //super();
+        this.firstname = firstName;
+        this.lastname = lastName;
         this.type = type;
     }
 
@@ -68,21 +68,37 @@ public class Author {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
+
+//    public String getFirstName() {
+//        return firstname;
+//    }
+//
+//    public void setFirstName(String firstName) {
+//        this.firstname = firstName;
+//    }
+//
+//    public String getLastName() {
+//        return lastname;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastname = lastName;
+//    }
 
     public String getType() {
         return type;

@@ -42,21 +42,6 @@ public class BlogPost {
 
     }
 
-//    public BlogPost(String title, String body, String date ) {
-//        super();
-//        this.title = title;
-//        this.body = body;
-//        this.date = date;
-//    }
-
-    //added this GN
-//    public BlogPost(String title, String body, String date, Author author ) {
-//        super();
-//        this.title = title;
-//        this.body = body;
-//        this.date = date;
-//        this.author = author;
-//    }
 
     public BlogPost(String title, String body, String date, Long author_id) {
         this.title = title;

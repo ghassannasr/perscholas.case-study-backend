@@ -25,6 +25,12 @@ public class Author {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
 //    @OneToMany(mappedBy = "author", cascade = {
 //            CascadeType.ALL
 //    })

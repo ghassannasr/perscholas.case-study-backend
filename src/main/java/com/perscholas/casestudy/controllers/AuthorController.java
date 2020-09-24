@@ -20,7 +20,7 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @RequestMapping(value = "/show-all", method = RequestMethod.GET)
+    @RequestMapping(value = "/get-all-authors", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Author>> index() {
         return new ResponseEntity<>(authorService.index(), HttpStatus.OK);
     }

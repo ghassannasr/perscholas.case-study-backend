@@ -1,5 +1,5 @@
 INSERT INTO author (firstname, lastname, type, username, password)
-VALUES ('Ghassan', 'Nasr', 'admin', 'ghassan.nasr@gmail.com', 'lorem');
+VALUES ('Ghassan', 'Nasr', 'admin', 'lorem', 'ipsum');
 
 INSERT INTO blogpost (title, body, date, author_id)
 VALUES

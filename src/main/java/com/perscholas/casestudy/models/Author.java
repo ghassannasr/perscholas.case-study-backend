@@ -58,12 +58,14 @@ public class Author {
 //        this(null, firstName, lastName, type);
 //    }
 
-    public Author(String firstName, String lastName, String type) {
+    public Author(String firstName, String lastName, String type, String username, String password) {
         //this.id = id;
         //super();
         this.firstname = firstName;
         this.lastname = lastName;
         this.type = type;
+        this.username = username;
+        this.password = password;
     }
 
     public Long getId() {
@@ -76,6 +78,22 @@ public class Author {
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setFirstname(String firstname) {

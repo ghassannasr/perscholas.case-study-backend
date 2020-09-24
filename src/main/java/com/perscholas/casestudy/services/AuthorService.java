@@ -3,7 +3,10 @@ package com.perscholas.casestudy.services;
 import com.perscholas.casestudy.models.Author;
 import com.perscholas.casestudy.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AuthorService {
@@ -37,6 +40,10 @@ public class AuthorService {
     public Boolean delete(Long id) {
         repository.deleteById(id);
         return true;
+    }
+
+    public List<Author> findAuthorsByType(String type) {
+        return repository.findAuthorsByType(type);
     }
 }
 

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/authors")
 //@CrossOrigin(origins = "http://3.22.118.142:3000", maxAge = 3600)
@@ -45,5 +47,10 @@ public class AuthorController {
     @RequestMapping(value = "/update-author/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Author> update(@PathVariable Long id, @RequestBody Author author) {
         return new ResponseEntity<>(authorService.update(id, author), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get-authors-of-type/{type}")
+    public ResponseEntity<List<Author>> getAuthorByType(@PathVariable String type) {
+        return new ResponseEntity<List<Author>>(authorService.findAuthorsByType(type), HttpStatus.OK);
     }
 }

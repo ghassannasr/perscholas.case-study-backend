@@ -36,18 +36,18 @@ public class Author {
 //    })
 //    private List < BlogPost > blogPosts;
 
-//    @OneToMany(cascade = CascadeType.ALL) //uncommented all these lines
+    @OneToMany(cascade = CascadeType.ALL) //uncommented all these lines
 //    @ElementCollection
     //@JoinColumn(name = "author_id", referencedColumnName = "id") //GN uncommented this line
-    //private List<BlogPost> blogPosts = new ArrayList<BlogPost>();
+    private List<BlogPost> blogPosts = new ArrayList<BlogPost>();
 
-//    public List<BlogPost> getBlogPosts() {
-//        return blogPosts;
-//    }
-//
-//    public void setBlogPosts(List<BlogPost> blogPosts) {
-//        this.blogPosts = blogPosts;
-//    }
+    public List<BlogPost> getBlogPosts() {
+        return blogPosts;
+    }
+
+    public void setBlogPosts(List<BlogPost> blogPosts) {
+        this.blogPosts = blogPosts;
+    }
 
 
     public Author() {
@@ -68,16 +68,23 @@ public class Author {
         this.password = password;
     }
 
+    public Author(Long id, String firstName, String lastName, String type, String username, String password) {
+        this.id = id;
+        //super();
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.type = type;
+        this.username = username;
+        this.password = password;
+    }
+
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFirstname() {
-        return firstname;
     }
 
     public String getUsername() {
@@ -96,6 +103,12 @@ public class Author {
         this.password = password;
     }
 
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
@@ -108,21 +121,6 @@ public class Author {
         this.lastname = lastname;
     }
 
-//    public String getFirstName() {
-//        return firstname;
-//    }
-//
-//    public void setFirstName(String firstName) {
-//        this.firstname = firstName;
-//    }
-//
-//    public String getLastName() {
-//        return lastname;
-//    }
-//
-//    public void setLastName(String lastName) {
-//        this.lastname = lastName;
-//    }
 
     public String getType() {
         return type;

@@ -26,37 +26,37 @@ public class BlogPost {
     @Column(name = "date")
     private String date;
 
-    @Column(name = "author_id")
-    private Long author_id;
+//    @Column(name = "author_id")
+//    private Long author_id;
 
 
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "author_id")
 //    private Author author;
 
-//    @ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
-    //@ManyToOne(cascade = CascadeType.ALL) //GN uncommented these two lines.
-   // private Author author;
+    //    @ManyToOne //TODO had to remove casdading in order to run setup() in ApplicationConfig
+    @ManyToOne//(cascade = CascadeType.ALL) //GN uncommented these two lines.
+    private Author author;
 
     public BlogPost() {
 
     }
 
 
-    public BlogPost(String title, String body, String date, Long author_id) {
+    public BlogPost(String title, String body, String date, Author author) {
         this.title = title;
         this.body = body;
         this.date = date;
-        this.author_id = author_id;
+        this.author = author;
     }
 
-//    public BlogPost(String title, String body, String date, Author author) {
-//        //this.id = id;
-//        this.title = title;
-//        this.body = body;
-//        this.date = date;
-//        this.author = author;
-//    }
+    public BlogPost(Long id, String title, String body, String date, Author author) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.date = date;
+        this.author = author;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -78,13 +78,13 @@ public class BlogPost {
         return body;
     }
 
-    public Long getAuthor_id() {
-        return author_id;
-    }
-
-    public void setAuthor_id(Long author_id) {
-        this.author_id = author_id;
-    }
+//    public Long getAuthor_id() {
+//        return author_id;
+//    }
+//
+//    public void setAuthor_id(Long author_id) {
+//        this.author_id = author_id;
+//    }
 
     public void setBody(String body) {
         this.body = body;
@@ -98,13 +98,13 @@ public class BlogPost {
         this.date = date;
     }
 
-//    public Author getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(Author author) {
-//        this.author = author;
-//    }
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
 
 }

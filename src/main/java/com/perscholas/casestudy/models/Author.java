@@ -31,14 +31,7 @@ public class Author {
     @Column(name = "password")
     private String password;
 
-//    @OneToMany(mappedBy = "author", cascade = {
-//            CascadeType.ALL
-//    })
-//    private List < BlogPost > blogPosts;
-
-    @OneToMany(cascade = CascadeType.ALL) //uncommented all these lines
-//    @ElementCollection
-    //@JoinColumn(name = "author_id", referencedColumnName = "id") //GN uncommented this line
+    @OneToMany(cascade = CascadeType.ALL)
     private List<BlogPost> blogPosts = new ArrayList<BlogPost>();
 
     public List<BlogPost> getBlogPosts() {
@@ -54,13 +47,7 @@ public class Author {
 
     }
 
-//    public Author(String firstName, String lastName, String type) {
-//        this(null, firstName, lastName, type);
-//    }
-
     public Author(String firstName, String lastName, String type, String username, String password) {
-        //this.id = id;
-        //super();
         this.firstname = firstName;
         this.lastname = lastName;
         this.type = type;
@@ -70,7 +57,6 @@ public class Author {
 
     public Author(Long id, String firstName, String lastName, String type, String username, String password) {
         this.id = id;
-        //super();
         this.firstname = firstName;
         this.lastname = lastName;
         this.type = type;

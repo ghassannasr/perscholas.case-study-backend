@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/authors")
-//@CrossOrigin(origins = "http://3.22.118.142:3000", maxAge = 3600)
+//@CrossOrigin(origins = "http://3.12.93.254:3000", maxAge = 3600)
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 public class AuthorController {
 

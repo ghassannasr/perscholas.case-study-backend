@@ -20,9 +20,9 @@ public class BlogPost {
     @Column(name = "title")
     private String title;
 
-//    @Lob
-//    @Column(name = "body", columnDefinition = "TEXT") //need column with unlimited capacity
-    @Column(name = "body")
+    @Lob
+  @Column(name = "body", columnDefinition = "TEXT") //need column with unlimited capacity
+//    @Column(name = "body")
     private String body;
 
     @Column(name = "date")

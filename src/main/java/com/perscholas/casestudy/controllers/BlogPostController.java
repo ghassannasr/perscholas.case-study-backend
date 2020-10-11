@@ -1,12 +1,10 @@
 package com.perscholas.casestudy.controllers;
 
 
-import com.perscholas.casestudy.models.Author;
 import com.perscholas.casestudy.models.BlogPost;
-import com.perscholas.casestudy.services.AuthorService;
 import com.perscholas.casestudy.services.BlogPostService;
+import com.perscholas.casestudy.services.MultiService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +19,15 @@ public class BlogPostController {
     private BlogPostService blogPostService;
 
     @Autowired
-    private AuthorService authorService;
+    private MultiService multiService;
 
     public BlogPostController(BlogPostService blogPostService) {
         this.blogPostService = blogPostService;
+    }
+
+    @RequestMapping(value = "/get-admin-posts", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<BlogPost>> getAdminPosts() {
+        return new ResponseEntity<>(multiService.getAdminPosts(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/get-all-posts", method = RequestMethod.GET)

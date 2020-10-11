@@ -2,6 +2,7 @@ package com.perscholas.casestudy.controllers;
 
 import com.perscholas.casestudy.models.Author;
 import com.perscholas.casestudy.services.AuthorService;
+import com.perscholas.casestudy.services.MultiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ public class AuthorController {
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private MultiService multiService;
 
     public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
@@ -50,7 +54,7 @@ public class AuthorController {
     }
 
     @GetMapping(value = "/get-authors-of-type/{type}")
-    public ResponseEntity<List<Author>> getAuthorByType(@PathVariable String type) {
-        return new ResponseEntity<List<Author>>(authorService.findAuthorsByType(type), HttpStatus.OK);
+    public ResponseEntity<Iterable<Author>> getAuthorByType(@PathVariable String type) {
+        return new ResponseEntity<Iterable<Author>>(multiService.findAuthorsByType(type), HttpStatus.OK);
     }
 }

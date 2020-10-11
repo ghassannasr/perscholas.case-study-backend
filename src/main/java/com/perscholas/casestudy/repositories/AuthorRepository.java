@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
-
-    @Query(value = "SELECT * FROM author WHERE type = :type", nativeQuery = true)
-    List<Author> findAuthorsByType(@Param("type") String type);
+//
+//    @Query(value = "SELECT * FROM author WHERE type = :type", nativeQuery = true)
+//    List<Author> findAuthorsByType(@Param("type") String type);
 }
